@@ -1,0 +1,205 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+/* Common styles */
+@import url('./reset.css');
+@import url('./base.css');
+
+:root {
+  --font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  --primary-color: #4e75ff;
+  --primary-hover: #6c8cff;
+  --border-color: #dcdcdc;
+  --text-color: #2e2f42;
+  --muted-text: #808080;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 36px auto 32px;
+}
+
+.form-input {
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  width: 280px;
+  height: 42px;
+  padding: 0 12px;
+  background-color: #fff;
+  font-family: var(--font-family);
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  color: var(--text-color);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-input::placeholder {
+  color: var(--muted-text);
+}
+
+.form-input:hover,
+.form-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(78, 117, 255, 0.2);
+  outline: none;
+}
+
+.btn {
+  border-radius: 6px;
+  border: none;
+  padding: 0 18px;
+  height: 42px;
+  background-color: var(--primary-color);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--primary-hover);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.gallery-item {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-link {
+  display: block;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.gallery-box {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+.gallery-box-text {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+.gallery-box-span {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--muted-text);
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+  margin: 20px auto;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  animation: prixClipFix 2s linear infinite;
+}
+
+.loader::after {
+  border-color: #ff3d00;
+  animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
+  inset: 6px;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0);
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0);
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%);
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+.is-hidden {
+  display: none;
+}
