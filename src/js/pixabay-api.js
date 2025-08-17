@@ -7,14 +7,14 @@ const instance = axios.create({
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
+        per_page: 15,
     },
 });
 
-export function getImagesByQuery(query) {
-    return instance
-        .get('', {
-            params: { q: query }
-        })
-        .then(response => response.data);
+export async function getImagesByQuery(query, page) {
+    const response = await instance.get("", {
+        params: { q: query, page },
+    })
+    return response.data;
 }
 
